@@ -22,6 +22,64 @@
     </header>
 
     <main id="main" class="app-shell">
+      <section class="film-grid" aria-label="Measured classical and WebMCP evidence">
+        <section class="panel head-to-head" data-testid="head-to-head" aria-labelledby="head-to-head-title">
+          <div class="classical-baseline-frame" data-testid="classical-baseline">
+            <div class="panel-heading head-to-head-heading">
+              <div>
+                <p class="eyebrow">Measured live · strongest possible classical baseline · tuned</p>
+                <h2 id="head-to-head-title">340 undo entries—or one.</h2>
+              </div>
+              <span class="truth-badge">NOT A NATIVE AGENT · NATIVE AGENT UNPROVEN</span>
+            </div>
+            <p class="method-note">
+              We give the classical script the exact policy, no model latency, the page's own Unrig
+              concession, and one full 14,000-row snapshot. It finishes. This is not a speed claim.
+              Even this strongest case still performs 340 one-row writes, creates 340 undo entries,
+              and takes focus while a human is typing. WebMCP stages one attributable transaction,
+              refuses release, and waits for one human Apply.
+            </p>
+            <div class="probe-grid">
+              <label class="probe-notes" for="human-notes">
+                <span>Live co-presence probe</span>
+                <textarea id="human-notes" data-testid="human-notes" rows="2" placeholder="Type here while each arm runs. Lost keys are counted only when focus is stolen."></textarea>
+              </label>
+              <div class="head-actions">
+                <button class="button button-quiet" type="button" data-testid="run-classical">Run strongest DOM arm</button>
+                <button class="button button-primary" type="button" data-testid="run-webmcp">Run WebMCP arm</button>
+              </div>
+            </div>
+            <div class="arm-status-grid" aria-live="polite">
+              <p><strong>Classical:</strong> <span data-testid="classical-status">READY</span></p>
+              <p><strong>WebMCP:</strong> <span data-testid="webmcp-arm-status">READY · NOT A NATIVE AGENT</span></p>
+            </div>
+            <div class="comparison-scroll">
+              <table class="comparison-table">
+                <thead><tr><th>Measured evidence</th><th>Strongest DOM-only</th><th>WebMCP browser API</th></tr></thead>
+                <tbody>
+                  <tr><th>Undo depth</th><td data-testid="classical-undo">—</td><td data-testid="webmcp-undo">—</td></tr>
+                  <tr><th>Human keystrokes lost</th><td data-testid="classical-lost">—</td><td data-testid="webmcp-lost">—</td></tr>
+                  <tr><th>Execution attribution</th><td>Scripted DOM · no model latency</td><td>Browser-owned API · native agent UNPROVEN</td></tr>
+                  <tr><th>Write refusal</th><td>340 one-row submits</td><td>Stops for human Apply</td></tr>
+                  <tr><th>Reach (context only)</th><td data-testid="classical-reach">—</td><td data-testid="webmcp-reach">—</td></tr>
+                  <tr><th>Turns (context only)</th><td data-testid="classical-turns">—</td><td data-testid="webmcp-turns">—</td></tr>
+                  <tr><th>Elapsed (context only)</th><td data-testid="classical-time">—</td><td data-testid="webmcp-time">—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <form class="legacy-editor" data-testid="legacy-editor" aria-label="Isolated legacy one-row editor">
+            <span class="eyebrow">Classical isolated legacy editor · one record per submit</span>
+            <input data-testid="legacy-id" aria-label="Legacy record id" autocomplete="off">
+            <input data-testid="legacy-field" aria-label="Legacy field" autocomplete="off">
+            <input data-testid="legacy-value" aria-label="Legacy value" autocomplete="off">
+            <button class="button button-quiet" data-testid="legacy-submit" type="submit">Save one isolated row</button>
+          </form>
+        </section>
+
+        <section class="watch-mount" data-testid="watch-mode" aria-label="Keyless catalogue replay"></section>
+      </section>
+
       <section class="hero" aria-labelledby="page-title">
         <div>
           <p class="eyebrow">Catalogue operations / 14,000 records</p>
@@ -68,61 +126,6 @@
         <p class="status" data-testid="status" aria-live="polite">Ready — 14,000 sample records loaded. No records written.</p>
       </section>
 
-      <section class="panel head-to-head" data-testid="head-to-head" aria-labelledby="head-to-head-title">
-        <div class="classical-baseline-frame" data-testid="classical-baseline">
-          <div class="panel-heading head-to-head-heading">
-            <div>
-              <p class="eyebrow">Measured live · strongest possible classical baseline · tuned</p>
-              <h2 id="head-to-head-title">340 undo entries—or one.</h2>
-            </div>
-            <span class="truth-badge">NOT A NATIVE AGENT · NATIVE AGENT UNPROVEN</span>
-          </div>
-          <p class="method-note">
-            We give the classical script the exact policy, no model latency, the page's own Unrig
-            concession, and one full 14,000-row snapshot. It finishes. This is not a speed claim.
-            Even this strongest case still performs 340 one-row writes, creates 340 undo entries,
-            and takes focus while a human is typing. WebMCP stages one attributable transaction,
-            refuses release, and waits for one human Apply.
-          </p>
-          <div class="probe-grid">
-            <label class="probe-notes" for="human-notes">
-              <span>Live co-presence probe</span>
-              <textarea id="human-notes" data-testid="human-notes" rows="2" placeholder="Type here while each arm runs. Lost keys are counted only when focus is stolen."></textarea>
-            </label>
-            <div class="head-actions">
-              <button class="button button-quiet" type="button" data-testid="run-classical">Run strongest DOM arm</button>
-              <button class="button button-primary" type="button" data-testid="run-webmcp">Run WebMCP arm</button>
-            </div>
-          </div>
-          <div class="arm-status-grid" aria-live="polite">
-            <p><strong>Classical:</strong> <span data-testid="classical-status">READY</span></p>
-            <p><strong>WebMCP:</strong> <span data-testid="webmcp-arm-status">READY · NOT A NATIVE AGENT</span></p>
-          </div>
-          <div class="comparison-scroll">
-            <table class="comparison-table">
-              <thead><tr><th>Measured evidence</th><th>Strongest DOM-only</th><th>WebMCP browser API</th></tr></thead>
-              <tbody>
-                <tr><th>Undo depth</th><td data-testid="classical-undo">—</td><td data-testid="webmcp-undo">—</td></tr>
-                <tr><th>Human keystrokes lost</th><td data-testid="classical-lost">—</td><td data-testid="webmcp-lost">—</td></tr>
-                <tr><th>Execution attribution</th><td>Scripted DOM · no model latency</td><td>Browser-owned API · native agent UNPROVEN</td></tr>
-                <tr><th>Write refusal</th><td>340 one-row submits</td><td>Stops for human Apply</td></tr>
-                <tr><th>Reach (context only)</th><td data-testid="classical-reach">—</td><td data-testid="webmcp-reach">—</td></tr>
-                <tr><th>Turns (context only)</th><td data-testid="classical-turns">—</td><td data-testid="webmcp-turns">—</td></tr>
-                <tr><th>Elapsed (context only)</th><td data-testid="classical-time">—</td><td data-testid="webmcp-time">—</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <form class="legacy-editor" data-testid="legacy-editor" aria-label="Isolated legacy one-row editor">
-          <span class="eyebrow">Classical isolated legacy editor · one record per submit</span>
-          <input data-testid="legacy-id" aria-label="Legacy record id" autocomplete="off">
-          <input data-testid="legacy-field" aria-label="Legacy field" autocomplete="off">
-          <input data-testid="legacy-value" aria-label="Legacy value" autocomplete="off">
-          <button class="button button-quiet" data-testid="legacy-submit" type="submit">Save one isolated row</button>
-        </form>
-      </section>
-
-      <section class="watch-mount" data-testid="watch-mode" aria-label="Keyless catalogue replay"></section>
 
       <section class="panel" aria-labelledby="catalogue-heading">
         <div class="panel-heading">

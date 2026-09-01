@@ -80,3 +80,22 @@ test('measured pitch leads with atomicity and co-presence, not speed or DOM reac
   assert.match(readme, /co-presence/i);
   assert.match(readme, /340[^\n]*undo[^\n]*one/i);
 });
+
+test('film frame is the first main content and places both evidence panels side by side at 1080p', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+  const mainAt = html.indexOf('<main');
+  const frameAt = html.indexOf('class="film-grid"');
+  const heroAt = html.indexOf('class="hero"');
+
+  assert.ok(mainAt > -1 && frameAt > mainAt && frameAt < heroAt);
+  assert.match(
+    html,
+    /class="film-grid"[\s\S]*data-testid="classical-baseline"[\s\S]*data-testid="watch-mode"/,
+  );
+  assert.match(css, /\.film-grid\s*\{[^}]*display\s*:\s*grid/s);
+  assert.match(css, /\.film-grid\s*\{[^}]*grid-template-columns\s*:\s*repeat\(2\s*,\s*minmax\(600px\s*,\s*1fr\)\)/s);
+  assert.match(css, /\.film-grid\s*\{[^}]*gap\s*:\s*24px/s);
+  assert.match(css, /\.film-grid\s*>\s*\.panel[\s\S]*margin-top\s*:\s*0/s);
+  assert.match(css, /@media\s*\(max-width:\s*1400px\)[\s\S]*\.film-grid\s*\{[^}]*grid-template-columns\s*:\s*1fr/s);
+});
