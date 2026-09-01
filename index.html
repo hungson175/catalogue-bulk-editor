@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="origin-trial" content="An2udOLsUVYin2YuygomRe8nO8qa5GA6th8xcWUQwoZ9A4D5wLJUbu1wgHaZbBM6YbHKnaxMD+yCEYiAzS3wrQIAAABUeyJvcmlnaW4iOiJodHRwczovL2h1bmdzb24xNzUuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJXZWJNQ1AiLCJleHBpcnkiOjE3OTQ4NzM2MDB9">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catalogue Bulk Editor</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./src/watch/recording_overlay.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#main">Ledgerline</a>
+      <div class="header-actions">
+        <span class="local-badge">Static · local data</span>
+        <span class="webmcp-badge" data-testid="webmcp-status" data-state="starting" aria-live="polite">WebMCP: checking this browser…</span>
+        <button class="button button-quiet" type="button" data-testid="command-trigger" aria-haspopup="dialog">
+          Commands <kbd>⌘ K</kbd>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Catalogue operations / 14,000 records</p>
+          <h1 id="page-title">Bulk changes you can inspect, release, and undo.</h1>
+          <p class="hero-copy">Preview every matching record in memory. Nothing changes until a human clicks Apply.</p>
+        </div>
+        <div class="safety-mark" aria-label="Safety model">
+          <span>01</span>
+          <strong>Stage first</strong>
+          <small>One transaction · one undo</small>
+        </div>
+      </section>
+
+      <section class="counter-grid" aria-label="Catalogue counters">
+        <article class="counter"><span>Total records</span><strong data-testid="total-records">—</strong></article>
+        <article class="counter"><span>DOM rows</span><strong data-testid="dom-rows">—</strong></article>
+        <article class="counter counter-accent"><span>Staged</span><strong data-testid="staged-count">—</strong></article>
+        <article class="counter"><span>Written last action</span><strong data-testid="written-count">—</strong></article>
+        <article class="counter counter-small"><span>State</span><strong data-testid="state-version">—</strong></article>
+        <article class="counter counter-small"><span>Refusals</span><strong data-testid="refusal-count">—</strong></article>
+        <article class="counter counter-small"><span>Undo</span><strong data-testid="undo-depth">—</strong></article>
+      </section>
+
+      <section class="task-card" aria-labelledby="task-heading">
+        <div class="task-heading-row">
+          <div>
+            <p class="eyebrow">Deterministic judge task</p>
+            <h2 id="task-heading">Preview the policy before release</h2>
+          </div>
+          <label class="unrig-control">
+            <input type="checkbox" data-testid="unrig-toggle">
+            <span>Unrig: render all 14,000 rows</span>
+          </label>
+        </div>
+        <label class="task-label" for="task-input">Task</label>
+        <textarea id="task-input" data-testid="task-input" rows="2" readonly>For supplier Fjord, discontinue records whose last sale was before 2026-06-01; reduce every remaining Fjord price by 15%.</textarea>
+        <div class="action-row">
+          <button class="button button-primary" type="button" data-testid="preview-changes">Preview changes</button>
+          <button class="button button-safety" type="button" data-testid="prove-agent-cannot-apply" disabled>Safety demonstration: prove agent cannot apply</button>
+          <button class="button button-apply" type="button" data-testid="apply-changes" disabled>Apply 340</button>
+          <button class="button button-quiet" type="button" data-testid="decline-changes" disabled>Decline</button>
+          <button class="button button-quiet" type="button" data-testid="undo-transaction" disabled>Undo transaction</button>
+        </div>
+        <p class="status" data-testid="status" aria-live="polite">Ready — 14,000 sample records loaded. No records written.</p>
+      </section>
+
+      <section class="watch-mount" data-testid="watch-mode" aria-label="Keyless catalogue replay"></section>
+
+      <section class="panel" aria-labelledby="catalogue-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Virtualized view</p>
+            <h2 id="catalogue-heading">Catalogue records</h2>
+          </div>
+          <div class="pagination">
+            <button class="button button-quiet" type="button" data-testid="previous-page">Previous 30</button>
+            <span data-testid="page-range">—</span>
+            <button class="button button-quiet" type="button" data-testid="next-page">Next 30</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>ID</th><th>SKU</th><th>Name</th><th>Supplier</th><th>Last sold</th><th>Price</th><th>Status</th></tr></thead>
+            <tbody data-testid="catalogue-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="split-grid">
+        <article class="panel diff-panel" aria-labelledby="diff-heading">
+          <div class="panel-heading">
+            <div><p class="eyebrow">Zero-write preview</p><h2 id="diff-heading">Staged diff</h2></div>
+            <strong data-testid="diff-summary">0 staged · 0 written</strong>
+          </div>
+          <div class="diff-list" data-testid="staged-diff"><p class="empty-state">Preview the Fjord policy to inspect all 340 changes.</p></div>
+        </article>
+        <article class="panel ledger-panel" aria-labelledby="ledger-heading">
+          <div class="panel-heading"><div><p class="eyebrow">Append-only evidence</p><h2 id="ledger-heading">Action ledger</h2></div></div>
+          <ol class="ledger" data-testid="ledger"><li class="empty-state">No actions yet.</li></ol>
+        </article>
+      </section>
+    </main>
+
+    <div class="palette-backdrop" data-testid="command-palette" role="dialog" aria-labelledby="palette-title" aria-modal="true" hidden>
+      <section class="palette-card">
+        <div class="palette-title-row"><div><p class="eyebrow">Same registry, agent off</p><h2 id="palette-title">Command palette</h2></div><kbd>Esc</kbd></div>
+        <div class="palette-list" data-testid="command-list"></div>
+      </section>
+    </div>
+    <script type="module">
+      import { bootstrap } from './src/app.js';
+      await bootstrap(document);
+    </script>
+  </body>
+</html>

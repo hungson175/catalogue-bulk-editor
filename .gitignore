@@ -1,0 +1,17 @@
+.env
+.env.*
+*.pem
+*.key
+*.mp4
+*.webm
+*.mov
+captures/
+receipts/
+profiles/
+.browser-profile/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

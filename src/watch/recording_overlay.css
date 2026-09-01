@@ -1,0 +1,52 @@
+.wmcp-watch {
+  box-sizing: border-box;
+  width: min(100%, 1920px);
+  max-height: min(100%, 1080px);
+  overflow: hidden;
+  padding: 16px;
+  border: 2px solid #fbbf24;
+  border-radius: 16px;
+  background: #07111f;
+  color: #f8fafc;
+  font: 600 18px/1.3 system-ui, sans-serif;
+}
+
+.wmcp-watch-header,
+.wmcp-hero-metrics,
+.wmcp-cards,
+.wmcp-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.wmcp-watch-header { justify-content: space-between; }
+.wmcp-boundary { margin: 0; color: #fbbf24; letter-spacing: .08em; }
+.wmcp-watch h2 { margin: 4px 0 0; font-size: 28px; }
+
+.wmcp-clock,
+.wmcp-step {
+  min-width: 4ch;
+  font-size: 3rem;
+  font-variant-numeric: tabular-nums;
+  color: #86efac;
+}
+
+.wmcp-cards { margin-top: 14px; flex-wrap: wrap; }
+.wmcp-card { min-width: 130px; padding: 10px 12px; background: #14213a; border-radius: 10px; }
+.wmcp-card-label { display: block; color: #cbd5e1; font-size: 14px; }
+.wmcp-card-value { display: block; font-size: 36px; font-variant-numeric: tabular-nums; }
+.wmcp-controls { margin-top: 14px; }
+.wmcp-controls button { min-height: 44px; padding: 8px 16px; font: inherit; }
+.wmcp-actual { max-height: 180px; overflow: auto; padding: 12px; background: #020617; color: #e2e8f0; }
+
+@media (max-width: 720px) {
+  .wmcp-watch-header { align-items: flex-start; flex-direction: column; }
+  .wmcp-clock, .wmcp-step { font-size: 48px; }
+  .wmcp-card { min-width: 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wmcp-watch * { scroll-behavior: auto !important; transition: none !important; }
+}
+
