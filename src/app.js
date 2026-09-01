@@ -2,6 +2,7 @@ import { createCatalogueState } from './catalogue_state.js';
 import { generateCatalogue } from './sample_catalogue.js';
 import { registerCatalogueWebMCP } from './webmcp_adapter.js';
 import { mountCatalogueWatchMode } from './watch_mode.js';
+import { mountHeadToHead } from './head_to_head.js';
 
 const POLICY = Object.freeze({ supplier: 'Fjord', cutoff: '2026-06-01', discountPct: 15 });
 const DIFF_OFFSETS = Object.freeze([0, 100, 200, 300]);
@@ -378,5 +379,6 @@ export async function bootstrap(documentRef) {
     registrationController: webmcpRegistrationController,
   });
   renderWebMCPStatus(receipt);
+  mountHeadToHead({ documentRef });
   return receipt;
 }
